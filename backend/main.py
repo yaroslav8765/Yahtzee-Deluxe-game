@@ -3,11 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
 from collections import Counter
-from models import Base
-from database import SessionLocal, engine
+from .models import Base
+from .database import SessionLocal, engine
 from typing import Annotated, Optional
 from sqlalchemy.orm import Session
-from models import Transactions
+from .models import Transactions
+
 app = FastAPI()
 
 def get_db():
@@ -29,15 +30,13 @@ except Exception as e:
     print(f"❌ Ошибка подключения: {e}")
 
 
-
-@app.get("/healthy")
-def health_check():
-    return {"status" : "healthy"}
-
 PAIR_COEFF = 1
 FULL_HOUSE_COEFF = 2
 YATHZEE_COEFF = 3
 THREE_PAIRS_COEFF = 4
+
+
+
 TEMP_USERS_BALANCE = 100
 
 
