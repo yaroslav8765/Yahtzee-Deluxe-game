@@ -8,11 +8,12 @@ from ..database import SessionLocal, engine
 from typing import Annotated, Optional
 from sqlalchemy.orm import Session
 from ..models import Transactions
+from .utils import roll_dices
 
-PAIR_COEFF = 1
-FULL_HOUSE_COEFF = 2
-YATHZEE_COEFF = 3
-THREE_PAIRS_COEFF = 4
+PAIR_COEFF = 0.8557133724715513
+FULL_HOUSE_COEFF = PAIR_COEFF*2
+YATHZEE_COEFF = PAIR_COEFF*3
+THREE_PAIRS_COEFF = PAIR_COEFF*4
 TEMP_USERS_BALANCE = 1000000
 
 router = APIRouter(
@@ -27,6 +28,7 @@ def get_db():
     finally:
         db.close()
 
+
 db_dependancy = Annotated[Session, Depends(get_db)]
 
 class TransactionRequest(BaseModel):
@@ -34,16 +36,10 @@ class TransactionRequest(BaseModel):
     type: str
 
 
-def roll_dices():
-    return [random.randint(1, 6) for _ in range(6)]
-
 @router.post("/roll_dices")
 def roll_dices(db: db_dependancy, transactionRequest: TransactionRequest):
     global TEMP_USERS_BALANCE
 
-
-
-    
     gambleResult = [random.randint(1, 6) for _ in range(6)]
 
 
@@ -55,13 +51,13 @@ def roll_dices(db: db_dependancy, transactionRequest: TransactionRequest):
     bet = transactionRequest.value
     TEMP_USERS_BALANCE -= abs(bet)
 
-    transactionModel = Transactions(
-        value = bet,
-        type = "Bet"
-    )
+    # transactionModel = Transactions(
+    #     value = bet,
+    #     type = transactionRequest.type
+    # )
 
-    db.add(transactionModel)
-    db.commit() 
+    # db.add(transactionModel)
+    # db.commit() 
 
     counts = Counter(gambleResult)
     values = sorted(counts.values(), reverse=True)

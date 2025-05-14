@@ -35,11 +35,10 @@ client = TestClient(app)
 
     
 def test_roll_dices():
-    for _ in range(500):
-        body = {"value": -1000, "type": "Bet"}
+    for _ in range(100000):
+        body = {"value": -10, "type": "Bet"}
         response = client.post("/gambling/roll_dices", json=body)
-        
-        print(f"Status Code: {response.status_code}")
+
         print(f"Response JSON: {response.json()}")
         
         assert response.status_code == status.HTTP_200_OK
