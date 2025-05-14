@@ -6,7 +6,7 @@ from ..models import Base
 from ..database import SessionLocal, engine
 from typing import Annotated
 from sqlalchemy.orm import Session
-from sqlalchemy import func
+from sqlalchemy import func, text
 from ..models import Transactions
 from starlette import status
 
@@ -42,15 +42,11 @@ def add_transaction(db: Session, value: float, type_: str):
 
 @router.post("/init")
 def init(db: db_dependancy):
+    db.execute(text("DROP TABLE IF EXISTS transactions"))
+    db.commit()
+    Base.metadata.create_all(bind = engine)
 
-    transactionModel = Transactions(
-        value = 100,
-        type = "Init"
-    )
-
-    db.add(transactionModel)
-    db.commit() 
-    
+    add_transaction(db, 100, "Init")
     return {"pair_coef" : PAIR_COEFF}
 
 @router.post("/roll_dices")
