@@ -3,7 +3,7 @@ import CoefWindow from "./ui/CoefWindow";
 function Coefs(props) {
     const pairCoef = props.coef.toFixed(3);
     return (
-        <div className="flex flex-col justify-center items-center max-w-[250px] w-full py-8 px-2 shadow-xl rounded-md m-10">
+        <div className="flex flex-col justify-center items-center max-w-[280px] w-full py-8 px-2 shadow-xl rounded-md  border-1 border-solid border-gray-100">
             <h2 className="text-2xl font-bold m-2">Prices</h2>
             <ul className="space-y-1 w-full">
                 <CoefWindow Title="Pair" Coef={pairCoef} Active={props.ActivePair}/>

@@ -1,7 +1,7 @@
 
 function BetsInput({onChangeHandler, submitHandler}) {
     return(
-        <div className="flex flex-col justify-center items-center max-w-[250px] w-full py-8 px-2 shadow-xl rounded-md m-10">
+        <div className="flex flex-col justify-center items-center max-w-[280px] w-full py-8 px-2 shadow-xl rounded-md py-8 px-10 border-1 border-solid border-gray-100">
             <h2 className="text-2xl font-bold m-2">Bet</h2>
             <div className="flex justify-between w-[155px] ml-4">
                 <input className="border-2 border-solid rounded-sm w-[60px] h-[40px] bg-gradient-to-b from-gray-300 to-white" onChange={onChangeHandler}></input>
