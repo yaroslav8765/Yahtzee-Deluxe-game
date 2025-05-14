@@ -18,9 +18,9 @@ const sides = [
   <GiInvertedDice6 className="text-7xl text-black m-1" />  
 ];
 
-function Dice({ number = 0 }) {
+function Dice({ number = 0, isShaking }) {
   const index = Math.max(0, Math.min(6, number));
-  return <>{sides[index]}</>;
+  return <div className={isShaking ? "die-shaking" : ""}>{sides[index]}</div>;
 }
 
 export default Dice;

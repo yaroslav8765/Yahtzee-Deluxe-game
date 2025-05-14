@@ -8,7 +8,7 @@ function Coefs(props) {
             <ul className="space-y-1 w-full">
                 <CoefWindow Title="Pair" Coef={pairCoef} Active={props.ActivePair}/>
                 <CoefWindow Title="Full house" Coef={pairCoef*2} Active={props.ActiveFullHouse}/>
-                <CoefWindow Title="Yathzee" Coef={pairCoef*3} Active={props.ActiveYathzee} />
+                <CoefWindow Title="Yahtzee" Coef={pairCoef*3} Active={props.ActiveYahtzee} />
                 <CoefWindow Title="Three Pairs" Coef={pairCoef*4} Active={props.ActiveThreePairs}/>
                 <CoefWindow Title="Other" Coef={pairCoef*0} Active={props.ActiveOther}/>
             </ul>
