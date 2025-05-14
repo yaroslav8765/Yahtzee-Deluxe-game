@@ -11,7 +11,8 @@ function BetsInput({ onChangeHandler, submitHandler, disableButton }) {
                 />
                 <button
                     disabled={disableButton}
-                    className={`border-2 border-solid rounded-sm w-[80px] h-[40px] text-black font-bold bg-gradient-to-b from-white to-red-300 hover:to-red-500 ${disableButton ? "bg-gray-500 cursor-not-allowed" : ""}`}
+                    className={`border-2 border-solid rounded-sm w-[80px] h-[40px] text-black font-bold 
+                    ${disableButton ? "bg-gray-500 cursor-not-allowed" : "bg-gradient-to-b from-white to-red-300 hover:to-red-500"}`}
                     onClick={submitHandler}
                 >
                     ROLL
