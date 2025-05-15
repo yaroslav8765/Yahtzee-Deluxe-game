@@ -84,7 +84,29 @@ To run the client-side of the game, perform the following actions in a **new ter
     npm run dev
     ```
 
+
 ## Running the Game
 
 After successfully completing all the steps, the project will be set up, and you can open the game in your browser by navigating to [http://localhost:5173/](http://localhost:5173/) and enjoy a little gamble :)
- 
+
+
+
+
+
+
+## Achieving a 95% RTP (Return to Player)
+
+The 95% RTP was achieved through a systematic approach involving simulation and rigorous testing:
+
+1.  **Simulation Script:** A dedicated Python script (`./backend/unit_tests/simulation.py`) was created. This script simulates a large number of game rounds. During these simulations, the script dynamically adjusts the game's payout coefficients. The goal of this iterative adjustment was to identify a set of coefficients that would result in an RTP of approximately 95%.
+
+2.  **Coefficient Optimization:** The simulation script continuously monitors the calculated RTP based on the current coefficients. It increases or decreases these coefficients in each simulation run until a configuration is found that yields an RTP close to the target of 95%.
+
+3.  **Unit Test Verification:** Once the simulation process identified suitable coefficients, a comprehensive unit test was implemented. This test sends a significant number of requests (100,000) to the game's API endpoints. After these simulated game plays, the test calculates the actual RTP achieved.
+
+4.  **RTP Validation:** The results of the unit test demonstrated an RTP of `95.00557717831803%`. This figure is remarkably close to the target RTP of 95%, confirming the effectiveness of the simulation and coefficient optimization process.
+
+   ![RTP Test Result](https://github.com/user-attachments/assets/4fa8ba6b-01ba-422e-a8d8-3d2e97a8759f) - Result of the RTP unit test.
+
+**Note:** With the initial standard coefficients of 1, 2, 3, and 4, the simulated RTP was approximately 111%.
+
