@@ -26,37 +26,49 @@ Follow these steps to run the back-end server:
     cd .\backend\
     ```
 
-3.  Create a virtual environment for the project:
+4.  Create a virtual environment for the project:
 
     ```bash
     python -m venv venv
     ```
 
-4.  Go back to the root directory of the project:
+    If you use linux:
+    
+    ```bash
+    python3 -m venv venv
+    ```
+    
+6.  Go back to the root directory of the project:
 
     ```bash
     cd ..
     ```
 
-5.  (Windows only) Remove script execution restrictions for the current process:
+7.  (Windows only) Remove script execution restrictions for the current process:
 
     ```powershell
     Set-ExecutionPolicy Unrestricted -Scope Process
     ```
 
-6.  Activate the virtual environment:
+8.  Activate the virtual environment:
 
     ```bash
     backend\venv\Scripts\activate
     ```
 
-7.  Install the necessary dependencies:
+     If you use linux:
+    
+    ```bash
+    source backend/venv/bin/activate
+    ```
+
+9.  Install the necessary dependencies:
 
     ```bash
     pip install fastapi uvicorn sqlalchemy pydantic_settings
     ```
 
-8.  Run the Uvicorn server:
+10.  Run the Uvicorn server:
 
     ```bash
     uvicorn backend.main:app --reload
